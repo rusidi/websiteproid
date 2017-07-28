@@ -1,85 +1,59 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/css/AdminLTE.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="<?=base_url()?>assets/plugins/iCheck/square/blue.css">
+<html class="bg-black">
+    <head>
+    <?php
+    $base_assets_url = 'assets/admin/default/';
+    ?>
+        <meta charset="UTF-8">
+        <title><?php //echo $page_title?></title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        <link href="<?php echo base_url().$base_assets_url;?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- font Awesome -->
+        <link href="<?php echo base_url().$base_assets_url;?>css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="<?php echo base_url().$base_assets_url;?>css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-</head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <b>Admin</b>LTE
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
-    <?php echo validation_errors(); ?>
-    <?php echo $this->session->flashdata('message');?>
-    <?php echo form_open(base_url().'index.php/login');?>
-      <div class="form-group has-feedback">
-        <input type="username" class="form-control" placeholder="Username" name="username">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="passwd">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="bg-black">
+
+        <div class="form-box" id="login-box">
+            <div class="header">Sign In</div>
+            <?php echo form_open(base_url().'index.php/login');?>
+                <div class="body bg-gray">
+                    <?php echo message_box(validation_errors(),'danger'); ?>
+                    <?php echo $this->session->flashdata('message');?>
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="Username"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="passwd" class="form-control" placeholder="Password"/>
+                    </div>          
+                    <div class="form-group">
+                        <input type="checkbox" name="remember" value="1" /> Remember me
+                    </div>
+                </div>
+                <div class="footer">                                                               
+                    <button type="submit" class="btn bg-olive btn-block">Sign me in</button>  
+                    
+                    <p><a href="<?php echo site_url('forgot_password')?>">I forgot my password</a></p>
+                    
+                    <a href="<?php echo site_url('signup')?>" class="text-center">Create new account</a>
+                </div>
+            <?php echo form_close();?>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-        <!-- /.col -->
-      </div>
-    <?php echo form_close();?>
 
-    <!-- /.social-auth-links -->
 
-  </div>
-  <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+        <!-- jQuery 2.0.2 -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="<?php echo $base_assets_url;?>js/bootstrap.min.js" type="text/javascript"></script>        
 
-<!-- jQuery 2.2.3 -->
-<script src="<?=base_url()?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="<?=base_url()?>assets/plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-</script>
-</body>
+    </body>
 </html>
