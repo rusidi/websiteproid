@@ -41,10 +41,11 @@
                 </div>
                 <div class="footer">                                                               
                     <button type="submit" class="btn bg-olive btn-block">Sign me in</button>  
-                    
+                    <?php /*
                     <p><a href="<?php echo site_url('forgot_password')?>">I forgot my password</a></p>
                     
-                    <a href="<?php echo site_url('signup')?>" class="text-center">Create new account</a>
+                    <a href="<?php echo site_url('signup')?>" class="text-center">Create new account</a>*/?>
+                    username: administrator & password: password
                 </div>
             <?php echo form_close();?>
         </div>
