@@ -531,6 +531,35 @@ public function edit_landing_page($id = null){
 	}
 
 
+
+    public function address(){
+
+        $config['base_url'] = site_url('admin/frontpage/index/');
+        $config['total_rows'] = count($this->Front->findAdminAddress());
+        $config['per_page'] = 10;
+        $config["uri_segment"] = 4;
+        $user_id = null;
+        if(!in_array('admin', $this->current_groups)){
+            $user_id = $this->session->userdata('user_id');
+        }
+        if ($this->input->get('q')):
+            $q = $this->input->get('q');
+            $this->data['data'] = $this->Front->findAdminAddress($config['per_page'], $this->uri->segment(4));
+            if (empty($this->data['data'])) {
+                $this->session->set_flashdata('message', message_box('Data tidak ditemukan','danger'));
+                redirect('admin/frontpage/address');
+            }
+            $config['total_rows'] = count($this->data['data']);
+        else:
+            $this->data['data'] = $this->Front->findAdminAddress($config['per_page'], $this->uri->segment(4));
+        endif;
+        $this->data['pagination'] = $this->bootstrap_pagination($config);
+        
+        $this->load_admin('frontpage/address/index');
+    }
+
+
+
 	
 	
 }

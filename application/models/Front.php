@@ -196,6 +196,14 @@ class Front extends CI_Model {
         return $query->result_array();
     }
 
+    function findAdminAddress($limit = null, $offset = 0){
+        $this->db->select('*');        
+        $this->db->limit($limit, $offset);
+        $this->db->order_by('id', 'desc');
+        $query = $this->db->get('cp_address');
+        return $query->result_array();
+    }
+
     
 
 }

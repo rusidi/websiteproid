@@ -59,6 +59,7 @@
                                     <li><a href="<?php echo site_url('admin/frontpage/company_overview')?>"><i class="fa fa-angle-double-right"></i> Company Overview</a></li>
                                     <li><a href="<?php echo site_url('admin/frontpage/testimoni')?>"><i class="fa fa-angle-double-right"></i> Testimoni</a></li>
                                     <li><a href="<?php echo site_url('admin/frontpage/partners')?>"><i class="fa fa-angle-double-right"></i> Partner</a></li>
+                                    <li><a href="<?php echo site_url('admin/frontpage/address')?>"><i class="fa fa-angle-double-right"></i> Address</a></li>
                                 </ul>
                             </li>
                             <li class="active">

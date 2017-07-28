@@ -32,7 +32,7 @@ class Login extends CI_Controller {
 
     public function logout() {
         if ($this->ion_auth->logout()) {
-            redirect('login');
+            redirect('home');
         }
     }
 
