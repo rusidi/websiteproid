@@ -6,23 +6,26 @@
     <div>
         <div class="row company-bg">
             <div class="col-md-4" style="padding:0px">
+             <form role="form" action="<?php echo site_url('home/send_message')?>" method="post" enctype="multipart/form-data">
+                <?php echo message_box(validation_errors(),'danger'); ?>
                  <div class="content" style="width: 100%; height: 300px; margin:0px">
                  <div class="col-md-6" style="padding: 2px">
                     Nama
-                 	<div class=""><input name="nama" type="text" class="form-control"></div>
+                 	<div class=""><input id="iname" name="name" type="text" class="form-control"></div>
                  </div> 
                  <div class="col-md-6" style="padding: 2px">
                     Email
-                 	<div class=""><input name="nama" type="text" class="form-control"></div>
+                 	<div class=""><input id="iemail" name="email" type="text" class="form-control"></div>
                  </div>               
                  <div class="col-md-12" style="padding: 2px">
                     Pesan
-                 	<div class=""><textarea name="pesan" class="form-control"></textarea></div>
+                 	<div class=""><textarea id="imessage" name="message" class="form-control"></textarea></div>
                  </div>
                   <div class="compayt-button">
-                        <a href="#" class="btn btn-effect">Submit</i></a>
+                        <button  type="submit" class="btn btn-effect" id="contact-submit">Submit</i></button>
                     </div>
                  </div>
+                 </form>
             </div>
             <div class="col-md-4" style="padding:0px">
                 <div class="content" style="width: 100%; height: 300px; margin:0px">
@@ -43,6 +46,26 @@
     <!-- .container -->
 </div>
 <!-- End Company Section -->
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                jQuery("#contact-submit").click(function(){
+                    if(jQuery("#iname").val() == ''){
+                        alert("Nama tidak boleh kosong");
+                        return false;
+                    }
+                    if(jQuery("#iemail").val() == ''){
+                        alert("Email tidak boleh kosong");
+                        return false;
+                    }
+                    if(jQuery("#imessage").val() == ''){
+                        alert("Pesan tidak boleh kosong");
+                        return false;
+                    }
+                });
+
+                return false;
+            });
+        </script>
         <script type="text/javascript">
         function initMap() {        
         var map = new google.maps.Map(document.getElementById('imap'), {

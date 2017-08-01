@@ -55,8 +55,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['home'] = 'frontwp/index';
-//$route['home'] = 'welcome';
 $route['admin'] = 'admin/dashboard';
+$route['home/send_message'] = 'frontwp/send_message';
 
 $route['signout'] = 'login/logout';
 $route['signin'] = 'login/login';
