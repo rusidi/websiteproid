@@ -229,7 +229,7 @@ You should have received a copy of the GNU General Public License along with thi
 			uploadImageBar.find('#imageUploadForm').on('submit',(function(e) {
 					e.preventDefault();
 					var formData = new FormData(this);
-					alert($(this).attr('action'));
+					//alert($(this).attr('action'));
 					$.ajax({
 						type:'POST',
 						url: $(this).attr('action'),
