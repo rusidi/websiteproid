@@ -5,8 +5,9 @@
     </div>
     <?php endif;?>
     <div class="panel-body content">
-		<?php echo $post['body'];?>
+		<?php echo $post['body'];?>    
 	</div>
+  <?php /*
 	<div class="panel-footer">
         <div class="post-meta">
           <span class="text-left"><a href="#"><i class="fa fa-heart"></i> 23</a></span> 
@@ -18,5 +19,5 @@
             </ul>
           </div>
         </div>
-     </div>
+     </div> */?>
 </div>
