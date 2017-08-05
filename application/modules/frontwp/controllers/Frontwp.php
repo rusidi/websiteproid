@@ -23,10 +23,7 @@ class Frontwp extends MY_Controller {
 		$this->load->model('Post');
 	}
 	public function index()
-	{
-		//die("Hi");
-		//$this->data['home_page'] = 1;
-		//$this->data['posts'] = $this->Post->find_active(3);
+	{		
 		$this->load_front('welcome');
 	}
 }

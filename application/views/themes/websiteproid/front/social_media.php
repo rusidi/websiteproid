@@ -7,7 +7,7 @@
                 <ul class="contact-details">
                     <?php if($social_media['show_logo'] != 0):?>
                      <li>
-                        <a href="#" class="text-bold">                            
+                        <a href="<?php echo base_url();?>" class="text-bold">                            
                             <b><?php echo $this->config->item('websiteproid_sitename'); ?></b>
                         </a>
                     </li>

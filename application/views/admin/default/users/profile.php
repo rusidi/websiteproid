@@ -43,6 +43,17 @@
                         <label for="username">Phone</label>
                         <input type="text" name="phone" class="form-control" id="username" placeholder="Phone" value="<?php echo set_value('phone', isset($user['phone']) ? $user['phone'] : '') ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="profile_picture">Profile Picture</label>
+                        <input type="file" name="profile_picture" class="form-control" id="profile_picture">
+                        <div style="margin-top:5px;">
+                            <?php if(isset($user['profile_picture']) && $user['profile_picture'] !=''){ ?>
+                            <img src="<?php echo base_url();?>assets/uploads/profile/<?php echo $user['profile_picture']?>"/>
+                            <?php }else { ?>
+                                 <img src="<?php echo $base_assets_url;?>img/avatar3.png"/>
+                            <?php } ?>
+                        </div>
+                    </div>
                 </div><!-- /.box-body -->
 
                 <div class="box-footer">

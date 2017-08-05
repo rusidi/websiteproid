@@ -55,7 +55,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['home'] = 'frontwp/index';
-//$route['home'] = 'welcome';
 $route['admin'] = 'admin/dashboard';
 
 $route['signout'] = 'login/logout';
@@ -65,7 +64,7 @@ $route['forgot_password'] = 'users/forgot_password';
 $route['auth/activate/(:num)/(:any)'] = 'users/activate/$1/$2';
 
 $route['read/(:any)'] = 'posts/read/$1';
-
+$route['search'] = 'posts/search';
 $route['category/(:any)'] = 'posts/category/$1';
 $route['category/(:any)/(:num)'] = 'posts/category/$1/$2';
 

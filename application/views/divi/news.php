@@ -14,12 +14,12 @@
                 <div class="col-md-12">
                     <div class="projects-box item">
                         <div class="projects-thumb">
-                            <a href="#">
+                            <a href="<?php echo site_url('read/'.$post['slug']) ?>">
                                 <img src="<?php echo BASE_URI.$post['featured_image']?>" class="img-news-4" alt="">
                             </a>
                         </div>
                         <div class="projects-content">
-                            <h4><a href="#"><?php echo $post['title'];?></a></h4>
+                            <h4><a href="<?php echo site_url('read/'.$post['slug']) ?>"><?php echo $post['title'];?></a></h4>
                             <div class="recent-meta">
                                 <span class="date"><i class="fa fa-file-text-o"></i><?php echo $post['published_at']?></span>                               
                             </div>

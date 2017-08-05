@@ -6,7 +6,7 @@ class Post extends CI_Model{
 	var $table = 'posts';
 
 
-	function find($limit = null, $offset = 0, $user_id = null, $q = null){
+	function find($limit = 10, $offset = 0, $user_id = null, $q = null){
 // 		SELECT pt.post_id AS `post_id`, GROUP_CONCAT(t.tag) AS `tags`
 // FROM post_tags AS pt
 // INNER JOIN tags AS t ON pt.tag_id = t.tag_id
@@ -27,7 +27,7 @@ class Post extends CI_Model{
         return $query->result_array();
 	}
 
-	function find_active($limit = null, $offset = 0, $q = null){
+	function find_active($limit = 10, $offset = 0, $q = null){
 		$this->db->select('posts.*,users.username');
         $this->db->join('users', 'users.id = posts.user_id');
         if ($q != null) {
@@ -42,20 +42,34 @@ class Post extends CI_Model{
         return $query->result_array();
 	}
 
-	function find_by_category($slug,$limit = null, $offset = 0){
+	function find_by_category($category,$limit = 10, $offset = 0){
 		$this->db->select('p.*,u.username');
 		$this->db->join('categories c','pc.category_id=c.id');
 		$this->db->join('posts p','pc.post_id=p.id');
 		$this->db->join('users u','p.user_id=u.id');
 		$this->db->where('p.status',1);
-		$this->db->where('c.slug',$slug);
+		$this->db->where('c.id',$category);
 		$this->db->group_by('pc.post_id');
 		$this->db->order_by('p.published_at','desc');
 		$posts = $this->db->get('posts_categories pc',$limit,$offset)->result_array();
 		return $posts;
 	}
 
-	function find_by_tag($slug,$limit = null, $offset = 0){
+	function find_by_keyword($keyword,$limit = 10, $offset = 0){
+		$this->db->select('p.*,u.username');
+		$this->db->join('posts_categories pc','pc.post_id=p.id');	
+		$this->db->join('categories c','pc.category_id=c.id');
+		$this->db->join('users u','p.user_id=u.id');			
+		$this->db->where('p.status',1);
+		$where =  "p.title like '%".$keyword."%' OR p.slug like '%".$keyword."%' OR c.name like '%".$keyword."%' ";
+		$this->db->where($where);
+		$this->db->group_by('pc.post_id');
+		$this->db->order_by('p.published_at','desc');
+		$posts = $this->db->get('posts p',$limit,$offset)->result_array();
+		return $posts;
+	}
+
+	function find_by_tag($slug,$limit = 10, $offset = 0){
 		$this->db->select('p.*,u.username');
 		$this->db->join('tags c','pc.tag_id=c.id');
 		$this->db->join('posts p','pc.post_id=p.id');

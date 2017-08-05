@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <!-- Basic -->
-    <title><?php echo $page_title?> - Company Profile Platform</title>
+    <title><?php echo $page_title?></title>
     <!-- Define Charset -->
     <meta charset="utf-8">
     <!-- Responsive Metatag -->

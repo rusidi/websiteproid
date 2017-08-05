@@ -126,7 +126,8 @@ class MY_Controller extends CI_Controller {
         if(count($this->Menu->findActive()) > 0){
             $this->data['main_menus'] = $this->general->bootstrap_menu($this->Menu->findActive());
         }
-       
+        
+        $this->data['page_title'] = $this->config->item('websiteproid_sitename');        
         $this->data['navigation'] = $this->load->view('themes/'.$this->config->item('websiteproid_theme').'/front/navigation',$this->data, TRUE);
 
         /*$this->data['header'] = $this->load->view('themes/'.$this->config->item('websiteproid_theme').'/header',$this->data, TRUE);

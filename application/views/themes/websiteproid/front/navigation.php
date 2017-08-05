@@ -25,7 +25,7 @@
             }
             }
         </style>
-        <a class="navbar-brand logo" href="index.html">
+        <a class="navbar-brand logo" href="<?php echo base_url();?>">
             <b><?php echo $page_title; ?></b>
         </a>
     </div>
@@ -40,10 +40,10 @@
         </a>
     </div>
     <!-- Form for navbar search area -->
-    <form class="full-search">
+    <form class="full-search" method="post" action="<?php echo base_url();?>index.php/search">
         <div class="container">
             <div class="row">
-                <input class="form-control" type="text" placeholder="Search...">
+                <input class="form-control" type="text" placeholder="Search..." name="keyword">
                 <a class="close-search">
                     <span class="fa fa-times fa-2x">
                     </span>

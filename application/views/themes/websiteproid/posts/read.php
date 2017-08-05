@@ -1,4 +1,7 @@
 <div class="panel panel-default"><!-- Post -->
+<br/>
+     <h1><?php echo isset($post['title'])?$post['title']:'';?></h1>
+     <hr/>
     <?php if(!empty($post['featured_image'])):?>
     <div class="panel-img">
      	<img src="<?php echo BASE_URI.$post['featured_image'];?>" alt="" class="img-responsive">
