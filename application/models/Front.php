@@ -204,7 +204,28 @@ class Front extends CI_Model {
         return $query->result_array();
     }
 
+    function createAddress($post){       
+        return $this->db->insert('cp_address', $post);
+    }
+
+     function findAddress_by_id($id){
+        $this->db->where('id',$id);
+        return $this->db->get('cp_address',1)->row_array();
+    }
     
+    function updateAddress($post,$id){       
+        $this->db->where('id',$id);
+        $this->db->update('cp_address',$post);
+    }
+
+    function deleteAddress($id){
+        $this->db->where('id',$id);
+        $this->db->delete('cp_address');
+    }
+
+    function sendMessage($post){       
+        return $this->db->insert('contacts', $post);
+    }
 
 }
 

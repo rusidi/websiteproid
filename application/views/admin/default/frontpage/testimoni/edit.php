@@ -17,11 +17,11 @@
                     </div>
                      <div class="form-group">
                         <label for="job_title">Job Title</label>
-                        <?php echo form_input(array('name' => 'job_title','class' => 'form-control', 'value' => set_value('name', isset($data['job_title']) ? $data['job_title'] : ''))); ?>
+                        <?php echo form_input(array('name' => 'job_title','class' => 'form-control', 'value' => set_value('job_title', isset($data['job_title']) ? $data['job_title'] : ''))); ?>
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <?php echo form_input(array('name' => 'description','class' => 'form-control', 'value' => set_value('name', isset($data['description']) ? $data['description'] : ''))); ?>
+                        <?php echo form_input(array('name' => 'description','class' => 'form-control', 'value' => set_value('description', isset($data['description']) ? $data['description'] : ''))); ?>
                     </div>
                     <div class="form-group">
                         <label for="photo">Photo</label>
@@ -30,7 +30,7 @@
                     </div>
                      <div class="form-group">
                         <label for="is_active">Active?</label>
-                        <?php echo form_checkbox(array('name' => 'is_active','class' => '', 'value' => 1,'checked' => set_value('name', ($data['is_active'] == 1) ? 'checked' : ''))); ?>
+                        <?php echo form_checkbox(array('name' => 'is_active','class' => '', 'value' => 1,'checked' => set_value('is_active', ($data['is_active'] == 1) ? 'checked' : ''))); ?>
                     </div>
 
                 </div><!-- /.box-body -->

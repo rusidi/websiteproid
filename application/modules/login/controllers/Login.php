@@ -8,7 +8,7 @@ class Login extends CI_Controller {
         $this->load->library('form_validation');
 
         if ($this->ion_auth->logged_in()) {
-            redirect('Home', 'refresh');
+            redirect('admin', 'refresh');
         }
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required');

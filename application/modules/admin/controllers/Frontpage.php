@@ -533,7 +533,6 @@ public function edit_landing_page($id = null){
 
 
     public function address(){
-
         $config['base_url'] = site_url('admin/frontpage/index/');
         $config['total_rows'] = count($this->Front->findAdminAddress());
         $config['per_page'] = 10;
@@ -559,7 +558,49 @@ public function edit_landing_page($id = null){
     }
 
 
+    public function add_address(){
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('phone', 'Phone', 'required');  
+        $this->form_validation->set_rules('address', 'address', 'required');      
+        if ($this->form_validation->run() == TRUE) {   
+            $data = $_POST;            
+            $data['created_by'] = $this->session->userdata('user_id');
+            $data['is_active'] = $this->input->post('is_active');
+            $this->Front->createAddress($data);    
+            $this->session->set_flashdata('message', message_box('New data has been saved','success'));
+            redirect('admin/frontpage/address');            
+        }
+        $this->load_admin('frontpage/address/add');
+    }
 
+    public function edit_address($id = null){
+        if($id == null){
+            $id = $this->input->post('id');
+        }
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('phone', 'Phone', 'required');  
+        $this->form_validation->set_rules('address', 'address', 'required');    
+        if ($this->form_validation->run() == TRUE) {
+            $data = $_POST;            
+            $data['created_by'] = $this->session->userdata('user_id');
+            $data['is_active'] = $this->input->post('is_active');
+            $this->Front->updateAddress($data,$id);    
+            $this->session->set_flashdata('message', message_box('Data has been edited','success'));
+            redirect('admin/frontpage/address');  
+        }               
+        $this->data['data'] = $this->Front->findAddress_by_id($id);
+        $this->load_admin('frontpage/address/edit');
+    }
+
+    public function delete_address($id = null){
+        if(!empty($id)){
+            $this->Front->deleteAddress($id);
+            $this->session->set_flashdata('message',message_box('Data has been deleted','success'));            
+        }else{
+            $this->session->set_flashdata('message',message_box('Invalid id','danger'));           
+        }
+        redirect('admin/frontpage/address');
+    }
 	
 	
 }

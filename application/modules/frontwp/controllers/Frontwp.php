@@ -26,4 +26,17 @@ class Frontwp extends MY_Controller {
 	{		
 		$this->load_front('welcome');
 	}
+
+	public function send_message(){		
+		$this->form_validation->set_rules('name', 'Nama', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');  
+        $this->form_validation->set_rules('message', 'Pesan', 'required');      
+        if ($this->form_validation->run() == TRUE) { 
+        	$this->load->model('Front');  
+            $data = $_POST;
+            $this->Front->sendMessage($data);    
+            $this->session->set_flashdata('message', message_box('Message has been sent','success'));
+            redirect('/');            
+        }       
+	}
 }
